@@ -1,0 +1,85 @@
+/* a minimalist set of CSS resets */
+
+/* default to border-box */
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+  background-color: ghostwhite;
+  
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/* adjust typography defaults */
+body {
+  margin: 1.5em;
+  font-family: Tahoma, Verdana, sans-serif;
+  line-height: 1.5;
+  color: #000000;
+}
+
+/* images and videos max out at full width */
+img,
+video {
+  height: auto;
+  max-width: 100%;
+}
+
+h1{
+  font-family: Verdana, Geneva, sans-serif; 
+  font-style: italic;
+  color: royalblue;
+}
+
+p{
+  border-bottom-style: solid;
+  border-color: lightblue; 
+  padding: 5px;
+}
+
+button{
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.hidden{
+  display: none;
+}
+
+#gameButtonArea > button {
+  width:200px;
+  height:200px;
+  margin:2px;
+  margin-top: 10px;
+}
+
+#btn1{
+  background-color: lightgreen;
+}
+
+#btn1:active, #btn1.lit{
+  background-color: lime;
+}
+
+#btn2{
+  background-color: skyblue;
+}
+#btn2:active, #btn2.lit{
+  background-color: deepskyblue;
+}
+
+#btn3{
+  background-color: salmon;
+}
+#btn3:active, #btn3.lit{
+  background-color: red;
+}
+
+#btn4{
+  background-color: khaki;
+}
+#btn4:active, #btn4.lit{
+  background-color: yellow;
+}
