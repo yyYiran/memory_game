@@ -7,24 +7,37 @@
 var clueHoldTime = 1000; // hold each clue's light/sound for 0.8 second
 const cluePauseTime = 300; //how long to pause in between clues
 const nextSeqWaitTime = 1000; //how long to wait before starting playback of the clue sequence
-
+var waitTime = 0;
 // global var
 const pattern = [];
-var numOfRounds = 3; 
+var numOfRounds = 7;
 var progress = 0; // 0~7
 var gamePlaying = false;
 var tonePlaying = false;
+
+var timerOn = false;
+
 var volume = 0.5; // btw 0 and 1
 var guessCount = 0; // how many guesses user has made so far
-var mistakeCount = 0; 
-const maxMistakeCount = Math.ceil(pattern.length * 0.3) + 1; 
+var mistakeCount = 0;
+const maxMistakeCount = 3;
+const maxTime = 5;
+let timeLeft = maxTime; 
+
+
+const progressBarWidth = 10; 
+const bgm = document.querySelector("audio");
+bgm.volume = 0.2;
+
+const timer = document.querySelector("#timer>#clock");
+const rabbit = document.querySelector("#timer>#timerProgress");
 
 // document object refers to the current web page
 // and can be accessed to make changes to the page content.
 
 let setPattern = (len) => {
   // push `len` random numbers in range 1-4
-  pattern.splice(0, pattern.length)
+  pattern.splice(0, pattern.length);
   for (var i = 0; i < len; i++) {
     const rand = Math.floor(Math.random() * 4 + 1);
     pattern.push(rand);
@@ -33,52 +46,54 @@ let setPattern = (len) => {
 };
 
 let startGame = () => {
+  bgm.play();
   progress = 0;
   gamePlaying = true;
-  mistakeCount = 0; 
-  clueHoldTime = 1000; 
+  mistakeCount = 0;
+  clueHoldTime = 1000;
   document.getElementById("startBtn").classList.add("hidden");
   document.getElementById("instructionTxt").classList.add("hidden");
   document.getElementById("stopBtn").classList.remove("hidden");
   document.getElementById("startTxt").classList.remove("hidden");
+
+  timer.innerHTML = formatTimer(maxTime);
+  rabbit.style.width = progressBarWidth + "%";
   
-  setPattern(numOfRounds)
+  setPattern(numOfRounds);
+  // timerOn = true; 
   playClueSequence();
 };
 
-let setNumberOfRounds = (num)=>{
-  console.log("num: " + num)
-  numOfRounds = num; 
-}
-
-
-let testsetTimeout = () => {
-  // changeLightBtn(1)
-
-  // when use writeln, although a newline char is added,
-  // whitespace is converted to a single space when rendering HTML
-  // use <br> instead
-  setTimeout(() => {
-    document.write("1st msg<br>");
-  }, 5000);
-  setTimeout(() => {
-    document.write("2nd msg<br>");
-  }, 3000);
-  setTimeout(
-    (msg) => {
-      document.write(msg + "<br>");
-    },
-    1000,
-    "3rd!"
-  );
-};
+// let setNumberOfRounds = (num) => {
+//   console.log("num: " + num);
+//   numOfRounds = num;
+// };
 
 function stopGame() {
+  bgm.pause();
   gamePlaying = false;
   document.getElementById("stopBtn").classList.add("hidden");
   document.getElementById("startTxt").classList.add("hidden");
   document.getElementById("startBtn").classList.remove("hidden");
   document.getElementById("instructionTxt").classList.remove("hidden");
+  
+  // timerOn = false; 
+  
+  console.log("timeLeft = " + timeLeft);
+  
+  if (timeLeft < maxTime){
+    console.log("clear timer now");
+    stopTimer();
+  } else{
+    console.log("clear timer in " + cluePauseTime);
+    setTimeout(()=>{
+      stopTimer();
+      timer.innerHTML = formatTimer(maxTime);
+      rabbit.style.width = progressBarWidth + "%";
+    }, cluePauseTime);
+  }
+  
+  
 }
 
 // function hello(){
@@ -160,7 +175,7 @@ let playSingleClue = (btn) => {
   if (gamePlaying) {
     // light up and play sound of btn for 'clueHoldTime'
     playTone(btn, clueHoldTime);
-    console.log("clue " + btn + " is on for " + clueHoldTime)
+    console.log("clue " + btn + " is on for " + clueHoldTime);
     changeLightBtn(btn);
     setTimeout(changeLightBtn, clueHoldTime, btn);
   }
@@ -169,13 +184,24 @@ let playSingleClue = (btn) => {
 let playClueSequence = () => {
   guessCount = 0; // reset so that user guess from the start
   context.resume();
-  var waitTime = nextSeqWaitTime; //set delay to initial wait time
+  waitTime = nextSeqWaitTime; //set delay to initial wait time
+  disableBtns();
+  
 
   for (var i = 0; i <= progress; i++) {
     console.log("play single clue: " + pattern[i] + " in " + waitTime + " ms");
     setTimeout(playSingleClue, waitTime, pattern[i]); // wait 1s before first clue
     waitTime += cluePauseTime + clueHoldTime;
   }
+  
+  // start timer
+  console.log("start timer in " + waitTime);
+  timer.innerHTML = formatTimer(maxTime);
+  rabbit.style.width = progressBarWidth + "%";
+  setTimeout(startTimer, waitTime);
+  setTimeout(enableBtns, waitTime);
+  
+  
 };
 
 let guess = (btn) => {
@@ -186,8 +212,11 @@ let guess = (btn) => {
 
   // if made correct guess: ith guess == pattern[i]
   if (btn == pattern[guessCount]) {
+    
     // reach end of progress
     if (guessCount == progress) {
+      stopTimer();
+      
       // progress reach end of pattern: win game
       if (progress == pattern.length - 1) {
         winGame();
@@ -195,7 +224,7 @@ let guess = (btn) => {
       // else, progress in middle of pattern: check for a longer sequence
       else {
         progress++;
-        clueHoldTime -= 100; // speed up
+        clueHoldTime -= 100; // speed up for next sequence
         playClueSequence();
       }
     }
@@ -206,24 +235,96 @@ let guess = (btn) => {
   }
   // incorrect guess: lose game
   else {
-    if (mistakeCount < maxMistakeCount){
-      alert((maxMistakeCount - mistakeCount) + " more try!")
-      console.log("mistake")
+    stopTimer();
+    
+    if (mistakeCount < maxMistakeCount) {
+      mistakeCount++;
+      maxMistakeCount === mistakeCount
+        ? alert("Last chance!")
+        : alert(maxMistakeCount - mistakeCount + " more chances left.");
+      console.log("mistake " + mistakeCount);
       playClueSequence(); // replay
-      mistakeCount++; 
-    } else{
-      console.log(maxMistakeCount)
+      
+    } else {
+      console.log("mistake " + mistakeCount);
       loseGame();
     }
   }
 };
 
 let loseGame = () => {
-  alert("Oops");
+  alert("You lost. Try again.");
   stopGame();
 };
 
 let winGame = () => {
-  alert("Congrats, you won the game!");
+  alert("Congrats, you won!");
   stopGame();
 };
+
+// rabbit.style.marginLeft = "10%";
+var setTimer = null;
+console.log("rabbit padding right" + rabbit.style.paddingRight);
+
+timer.innerHTML = formatTimer(maxTime);
+rabbit.style.width = progressBarWidth + "%";
+
+let startTimer = () => {
+  // timer.innerHTML = second + "";
+  timeLeft = maxTime;
+  let width = progressBarWidth;
+  const rabbitIntervel = 90 / maxTime;
+  
+  // initial position
+  timer.innerHTML = formatTimer(maxTime);
+  rabbit.style.width = width + "%";
+
+  setTimer = setInterval(() => {
+    timer.innerHTML = formatTimer(--timeLeft);
+    width += rabbitIntervel;
+    rabbit.style.width = width + "%";
+    
+    if (timeLeft == "0") {
+      stopTimer();
+      
+      setTimeout(()=>{
+        if (mistakeCount < maxMistakeCount) {
+          mistakeCount++;
+          maxMistakeCount === mistakeCount
+            ? alert("Time out. Last chance!")
+            : alert("Time out. " + (maxMistakeCount - mistakeCount) + " more chances left.");
+          console.log("mistake " + mistakeCount);
+          playClueSequence(); // replay
+        } else {
+          console.log("mistake " + mistakeCount);
+          loseGame();
+        }
+      }, 500);
+      
+    }
+  }, 1000);
+};
+
+function formatTimer(timeLeft) {
+  console.log(timeLeft);
+  if (timeLeft < 10) {
+    timeLeft = `0${timeLeft}`;
+  }
+  return `0:${timeLeft}`;
+}
+
+let stopTimer = () => {
+  clearInterval(setTimer);
+  
+};
+
+
+function disableBtns(){
+  let gameBtns = document.querySelectorAll("button");
+  gameBtns.forEach((btn)=>{btn.disabled=true;})
+}
+
+function enableBtns(){
+  let gameBtns = document.querySelectorAll("button");
+  gameBtns.forEach((btn)=>{btn.disabled=false;})
+}
