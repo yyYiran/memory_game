@@ -12,6 +12,8 @@ html {
   box-sizing: inherit;
 }
 
+
+
 /* adjust typography defaults */
 body {
   margin: 1.5em;
@@ -27,16 +29,45 @@ video {
   max-width: 100%;
 }
 
+.hidden{
+  display: none !important;
+}
+
 h1{
   font-family: Verdana, Geneva, sans-serif; 
   font-style: italic;
   color: royalblue;
 }
 
-p{
-  border-bottom-style: solid;
-  border-color: lightblue; 
+.instruction{
+  border: solid lightblue;
   padding: 5px;
+}
+
+#timer{
+  border: 1px solid black;
+  position: relative;
+  height: 145px;
+  width: 100%;
+  background-color: white; 
+}
+
+#timer>#clock{
+  margin-left: 40%;
+  margin-right: 40%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  border: solid black;
+}
+
+#timer>#timerProgress{
+  font-size:30px;
+  height: 43px;
+  width: 10%;
+  text-align: right;
+  position: absolute;
+  background-image: linear-gradient(180deg, white, lightblue);
 }
 
 button{
@@ -44,9 +75,8 @@ button{
   border-radius: 10px;
 }
 
-.hidden{
-  display: none;
-}
+
+
 
 #gameButtonArea > button {
   width:200px;
@@ -56,30 +86,36 @@ button{
 }
 
 #btn1{
-  background-color: lightgreen;
+  background-image: url(https://cdn.glitch.global/0d10ae2a-3f32-41b9-866d-ffdb62c20ea9/green_bird.jpg?v=1648099646149);
+  background-size: cover;
 }
 
 #btn1:active, #btn1.lit{
-  background-color: lime;
+  border: 3px solid lime;
 }
 
 #btn2{
-  background-color: skyblue;
+  background-image: url(https://cdn.glitch.global/0d10ae2a-3f32-41b9-866d-ffdb62c20ea9/blue_shark.jpg?v=1648099646575);
+  background-size: cover;
 }
 #btn2:active, #btn2.lit{
-  background-color: deepskyblue;
+  border: 3px solid skyblue;
 }
 
 #btn3{
-  background-color: salmon;
+  background-image: url(https://cdn.glitch.global/0d10ae2a-3f32-41b9-866d-ffdb62c20ea9/red_scarlet_ibis.jpg?v=1648099649528);
+  background-size: cover;
+  background-position: center; 
 }
 #btn3:active, #btn3.lit{
-  background-color: red;
+  border: 3px solid #FF2400;
 }
 
 #btn4{
-  background-color: khaki;
+  background-image: url(https://cdn.glitch.global/0d10ae2a-3f32-41b9-866d-ffdb62c20ea9/yellow_rat.jpg?v=1648099735636);
+  background-size: cover;
+  background-position: center; 
 }
 #btn4:active, #btn4.lit{
-  background-color: yellow;
+  border: 3px solid khaki; 
 }

@@ -15,44 +15,63 @@
   </head>
 
   <body>
+    <audio
+      src="https://cdn.glitch.global/0d10ae2a-3f32-41b9-866d-ffdb62c20ea9/mixkit-forest-near-countryside-farm-1221.wav?v=1648147416396"
+      id="farmAudio"
+      volume="0.1"
+    ></audio>
     <!-- this is the start of content -->
     <h1>Light and Sound Memory Game</h1>
-    <p id="instructionTxt">
-      Repeat the pattern back to win the game.
-<!--       <a href="https://glitch.com/edit/#!/remix/glitch-hello-website"
-        >~glitch-hello-website</a
-      >. -->
-    </p>
-    
-    <p id="startTxt" class="hidden">
-      Start now!
-    </p>
-    
-    <label for="fNumRounds">Number of rounds: </label>
-    <input type="number" id="fNumRounds" min="1" max="100" value="3" onchange="setNumberOfRounds(this.innerHTML)"><br>
-    
-    <button id="startBtn" onclick="startGame()">
-      Start
-    </button>
-    
-    <button id="stopBtn" class="hidden" onclick="stopGame()">
-      Stop
-    </button>
-    
-    <button id="testBtn" class="hidden" onclick="playManyClues()">
-      Test
-    </button>
-    
-    <div id="gameButtonArea">
-      <button id="btn1" onclick="guess(1)" onmousedown="startTone(1)" onmouseup="stopTone()"></button>
-      <button id="btn2" onclick="guess(2)" onmousedown="startTone(2)" onmouseup="stopTone()"></button>
-      <button id="btn3" onclick="guess(3)" onmousedown="startTone(3)" onmouseup="stopTone()"></button>
-      <button id="btn4" onclick="guess(4)" onmousedown="startTone(4)" onmouseup="stopTone()"></button>
+
+    <div class="instruction">
+      <p id="instructionTxt">Repeat the pattern back to win the game.</p>
+      <p id="startTxt" class="hidden">Start now!</p>
     </div>
     
-<!--     <script language="JavaScript" type="text/javascript">
+    <div id="timer">
+      <div id="clock" >ncncn</div>
+      <div id="timerProgress">🐰</div>
+    </div>
+
+    <!--     <label for="fNumRounds">Number of rounds: </label>
+    <input type="number" id="fNumRounds" min="1" max="100" value="3" onchange="setNumberOfRounds(this.innerHTML)"><br> -->
+
+    <button id="startBtn" onclick="startGame()">Start</button>
+
+    <button id="stopBtn" class="hidden" onclick="stopGame()">Stop</button>
+
+    <button id="testBtn" onclick="startTimer()">Test</button>
+    <button onclick="stopTimer()">stoptimer</button>
+
+    <div id="gameButtonArea">
+      <button
+        id="btn1"
+        onclick="guess(1)"
+        onmousedown="startTone(1)"
+        onmouseup="stopTone()"
+      ></button>
+      <button
+        id="btn2"
+        onclick="guess(2)"
+        onmousedown="startTone(2)"
+        onmouseup="stopTone()"
+      ></button>
+      <button
+        id="btn3"
+        onclick="guess(3)"
+        onmousedown="startTone(3)"
+        onmouseup="stopTone()"
+      ></button>
+      <button
+        id="btn4"
+        onclick="guess(4)"
+        onmousedown="startTone(4)"
+        onmouseup="stopTone()"
+      ></button>
+    </div>
+
+    <!--     <script language="JavaScript" type="text/javascript">
       hello();
     </script> -->
-    
   </body>
 </html>
