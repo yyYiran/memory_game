@@ -2,11 +2,13 @@
 
 **Memory Game** is a Light & Sound Memory game to apply for CodePath's SITE Program. 
 
+Computer randomly generates a sequence of 7 clues known as a pattern. There are 4 buttons, each represents a clue with a unique image and sound. At the nth round, users need to play back the first n clues in correct order to pass. Users win if they pass 7 rounds. 
+
 Submitted by: **Yiran Wan**
 
-Time spent: **5** hours spent in total
+Time spent: **7** hours spent in total
 
-Link to project: (https://glitch.com/edit/#!/kindly-pebble-nitrogen)
+Link to project: (https://kindly-pebble-nitrogen.glitch.me/)
 
 ## Required Functionality
 
@@ -22,19 +24,19 @@ The following **required** functionality is complete:
 
 The following **optional** features are implemented:
 
-* [ ] Any HTML page elements (including game buttons) has been styled differently than in the tutorial
-* [ ] Buttons use a pitch (frequency) other than the ones in the tutorial
+* [x] Any HTML page elements (including game buttons) has been styled differently than in the tutorial
+* [x] Buttons use a pitch (frequency) other than the ones in the tutorial
 * [ ] More than 4 functional game buttons
 * [x] Playback speeds up on each turn
 * [x] Computer picks a different pattern each time the game is played
-* [ ] Player only loses after 3 mistakes (instead of on the first mistake)
-* [ ] Game button appearance change goes beyond color (e.g. add an image)
+* [x] Player only loses after 3 mistakes (instead of on the first mistake)
+* [x] Game button appearance change goes beyond color (e.g. add an image)
 * [ ] Game button sound is more complex than a single tone (e.g. an audio file, a chord, a sequence of multiple tones)
 * [ ] User has a limited amount of time to enter their guess on each turn
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app!
+- [x] Background music added
 
 ## Video Walkthrough (GIF)
 
@@ -66,7 +68,7 @@ If you recorded multiple GIFs for all the implemented features, you can add them
 
 ## License
 
-    Copyright [YOUR NAME]
+    Copyright [Yiran Wan]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
