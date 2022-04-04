@@ -45,11 +45,12 @@ h1{
 }
 
 #timer{
-  border: 1px solid black;
+  border: 1px solid lightblue;
   position: relative;
-  height: 145px;
+  height: 42px;
   width: 100%;
   background-color: white; 
+  margin-bottom: 10px;
 }
 
 #timer>#clock{
@@ -63,7 +64,7 @@ h1{
 
 #timer>#timerProgress{
   font-size:30px;
-  height: 43px;
+  height: 40px;
   width: 10%;
   text-align: right;
   position: absolute;
@@ -74,8 +75,6 @@ button{
   padding: 10px;
   border-radius: 10px;
 }
-
-
 
 
 #gameButtonArea > button {
