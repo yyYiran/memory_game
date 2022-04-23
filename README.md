@@ -53,12 +53,17 @@ The following **additional** features are implemented:
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
 
+- I encountered some difficulties while implementing the timer that limits the user to enter a guess within 5 seconds. When a user takes a guess too quickly or click game buttons while the pattern is playing, the second timer starts before the first one ends, causing the timer not being able to display the correct remaining time. 
+- To solve this problem, I went through the logic of `guess(btn)` method carefully and read the documents of `setTimeout` to better understand the logic, so that I could find the correct positions in the codes to implement timer to make sure it starts as soon as the pattern stops and ends as soon as the user finishes their guess. To deal with the issue caused two timers ticking concurrently, I initialy thought of multithreading. However, since guesses (clicking button) directly associates with the timer, the more straightforward approach would be to disable the buttons while the pattern is playing. This not only resolvings the problem of conflicting timers, but also allows patterns to beb played without interruption. For me, a take-away would be to understand the logic and plan accordingly before writing a single line of code. 
 
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
 
+- I'm recently learning about Agile software development, and it would be interesting to apply it to the process of web development. I would espacially like to learn more about testing in order to deliver code that covers as many scenarios as possible. Right now, I'm the developer and the tester of the prework, so I might not be able to cover all possible use cases. It would be nice to try pair programming in our future projects. 
 
 4. If you had a few more hours to work on this project, what would you spend them doing (for example: refactoring certain functions, adding additional features, etc). Be specific. (recommended 100 - 300 words) 
 
+- I would implement the backend side of the app. For now, every user can make at most 3 wrong guesses and are required to give a guess within five second. On top of these, it would be nice to enable user setting that allows user to adjust the difficulty of the game through restriction time, number of buttons, number of rounds etc. This would add more flexibility to the game. Also, by storing record of users in the database, user would be able to see how many games they have won consecutively. 
+- Game would be more fun when you play with friends. Another feature I would like to work on is to compete with friends on this game. Possible ways to implement this could be entering a room with code, enabling adding friends, and/or scan QR code. 
 
 
 
