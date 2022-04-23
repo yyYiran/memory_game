@@ -36,7 +36,7 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [x] ![Background music added](https://user-images.githubusercontent.com/72692392/161478682-2d7180d0-5f1e-4493-97de-aebddd829dbd.mp4)
+- [x] [Background music added (click to see video)](https://user-images.githubusercontent.com/72692392/161478682-2d7180d0-5f1e-4493-97de-aebddd829dbd.mp4)
 
 
 ## Video Walkthrough (GIF)
@@ -49,16 +49,18 @@ If you recorded multiple GIFs for all the implemented features, you can add them
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
-[YOUR ANSWER HERE]
+- The images of the game buttons come from https://unsplash.com/
+- The background music of the game comes from https://mixkit.co/free-sound-effects/music/
+- stackoverflow
 
 2. What was a challenge you encountered in creating this submission (be specific)? How did you overcome it? (recommended 200 - 400 words) 
-[YOUR ANSWER HERE]
+
 
 3. What questions about web development do you have after completing your submission? (recommended 100 - 300 words) 
-[YOUR ANSWER HERE]
+
 
 4. If you had a few more hours to work on this project, what would you spend them doing (for example: refactoring certain functions, adding additional features, etc). Be specific. (recommended 100 - 300 words) 
-[YOUR ANSWER HERE]
+
 
 
 
@@ -69,7 +71,7 @@ If you recorded multiple GIFs for all the implemented features, you can add them
 
 ## License
 
-    Copyright [YOUR NAME]
+    Copyright [Yiran Wan]
 
     Licensed under the Apache License, Version 2.0 (the "License");
     you may not use this file except in compliance with the License.
