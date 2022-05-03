@@ -34,16 +34,12 @@ The following **optional** features are implemented:
 * [ ] Game button sound is more complex than a single tone (e.g. an audio file, a chord, a sequence of multiple tones)
 * [x] User has a limited amount of time to enter their guess on each turn
 
-The following **additional** features are implemented:
+Here is the video:
 
-- [x] [Background music added (click to see video)](https://user-images.githubusercontent.com/72692392/161478682-2d7180d0-5f1e-4493-97de-aebddd829dbd.mp4)
+[click to see video](https://user-images.githubusercontent.com/72692392/161478682-2d7180d0-5f1e-4493-97de-aebddd829dbd.mp4)
 
 
-## Video Walkthrough (GIF)
 
-![part1](https://media.giphy.com/media/5bkc3y7YQuyMye9RLj/giphy.gif)
-![part2](https://media.giphy.com/media/yLxg8qUwlSZsJCCaoD/giphy.gif)
-![part3](https://media.giphy.com/media/9elX7blqoQbkbWTjWN/giphy.gif)
 
 ## Reflection Questions
 1. If you used any outside resources to help complete your submission (websites, books, people, etc) list them here. 
@@ -65,11 +61,6 @@ The following **additional** features are implemented:
 - I would implement the backend side of the app. For now, every user can make at most 3 wrong guesses and are required to give a guess within five second. On top of these, it would be nice to enable user setting that allows user to adjust the difficulty of the game through restriction time, number of buttons, number of rounds etc. This would add more flexibility to the game. Also, by storing record of users in the database, user would be able to see how many games they have won consecutively. 
 - Game would be more fun when you play with friends. Another feature I would like to work on is to compete with friends on this game. Possible ways to implement this could be entering a room with code, enabling adding friends, and/or scan QR code. 
 
-
-
-## Interview Recording URL Link
-
-[Interview video](https://user-images.githubusercontent.com/72692392/165343324-33b478b9-58f9-4932-aaf6-50fe3affeebc.mp4)
 
 
 
